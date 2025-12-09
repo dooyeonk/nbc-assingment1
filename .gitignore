@@ -468,3 +468,7 @@ FodyWeavers.xsd
 
 # debug information files
 *.dwo
+
+*.vcxproj.user
+Debug/
+Release/
