@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+using namespace std;  // NOLINT
 
 void setPotion(int count, int* p_HPPotion, int* p_MPPotion) {
   *p_HPPotion = count;
@@ -21,8 +21,10 @@ int main() {
   int powerIdx = 2;
   int armorIdx = 3;
   int levelIdx = 4;
+  int strIdx = 5;
+  int dexIdx = 6;
 
-  int stat[5] = {};
+  int stat[7] = {};
 
   while (true) {
     int hp;
@@ -57,6 +59,8 @@ int main() {
   }
 
   stat[levelIdx] = 1;
+  stat[strIdx] = 5;
+  stat[dexIdx] = 5;
 
   int hpPotion;
   int mpPotion;
@@ -121,14 +125,21 @@ int main() {
         cout << "* HP : " << stat[hpIdx] << ", MP : " << stat[mpIdx]
              << ", 공격력 : " << stat[powerIdx]
              << ", 방어력 : " << stat[armorIdx] << ", 레벨 : " << stat[levelIdx]
+             << ", 힘 : " << stat[strIdx] << ", 민첩 : " << stat[dexIdx]
+             << ", 남은 HP/MP 포션 수 : " << hpPotion << "/" << mpPotion
              << endl;
         break;
       case 6:
-        // 레벨업 포션 지급
+        // 레벨업, 포션 지급 + 스탯 증가
         cout << "* 레벨업! HP/MP 포션이 지급됩니다." << endl;
         refillPotion(&hpPotion, &mpPotion);
         cout << "남은 HP/MP 포션 수 : " << hpPotion << "/" << mpPotion << endl;
+        cout << "스탯 증가! (힘 +5, 민첩 +5)" << endl;
+        stat[strIdx] += 5;
+        stat[dexIdx] += 5;
         cout << "현재 레벨 : " << ++stat[levelIdx] << endl;
+        cout << "현재 힘 : " << stat[strIdx] << endl;
+        cout << "현재 민첩 : " << stat[dexIdx] << endl;
         break;
       default:
         cout << "잘못된 명령입니다. 유효한 번호를 입력해주세요." << endl;
