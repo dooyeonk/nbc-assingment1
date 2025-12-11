@@ -20,8 +20,9 @@ int main() {
   int mpIdx = 1;
   int powerIdx = 2;
   int armorIdx = 3;
+  int levelIdx = 4;
 
-  int stat[4] = {};
+  int stat[5] = {};
 
   while (true) {
     int hp;
@@ -54,6 +55,8 @@ int main() {
       cout << "0 이하는 입력할 수 없습니다.";
     }
   }
+
+  stat[levelIdx] = 1;
 
   int hpPotion;
   int mpPotion;
@@ -117,13 +120,15 @@ int main() {
         // 스텟 확인
         cout << "* HP : " << stat[hpIdx] << ", MP : " << stat[mpIdx]
              << ", 공격력 : " << stat[powerIdx]
-             << ", 방어력 : " << stat[armorIdx] << endl;
+             << ", 방어력 : " << stat[armorIdx] << ", 레벨 : " << stat[levelIdx]
+             << endl;
         break;
       case 6:
         // 레벨업 포션 지급
         cout << "* 레벨업! HP/MP 포션이 지급됩니다." << endl;
         refillPotion(&hpPotion, &mpPotion);
         cout << "남은 HP/MP 포션 수 : " << hpPotion << "/" << mpPotion << endl;
+        cout << "현재 레벨 : " << ++stat[levelIdx] << endl;
         break;
       default:
         cout << "잘못된 명령입니다. 유효한 번호를 입력해주세요." << endl;
